@@ -10,7 +10,7 @@ export const allowInputByPattern = (event: SyntheticEvent<HTMLInputElement>, pat
   return isAllowedInput ? value : value.slice(0, -1);
 }
 
-export const showNotification = (type: IconType, message: string, description: string) => {
+export const showNotification = (type: IconType, message: string, description: string = '') => {
   notification[type]({
     message,
     description,

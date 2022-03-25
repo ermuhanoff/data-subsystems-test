@@ -1,9 +1,9 @@
 import React, { SyntheticEvent } from 'react';
-import { Button, Card, Col, DatePicker, Form, Input, notification, Row } from 'antd';
+import { Button, Card, Col, DatePicker, Form, Input, Row } from 'antd';
 
 import './CardBody.css';
 import { constants } from './constants';
-import { allowInputByPattern } from '../../utils/utils';
+import { allowInputByPattern, showNotification } from '../../utils/utils';
 import { pay } from '../../api/payment';
 
 export const CardBody = () => {
@@ -13,8 +13,14 @@ export const CardBody = () => {
     event.preventDefault();
 
     form.validateFields()
-      .then(() => {
-        form.submit();
+      .then(() => form.submit());
+  }
+
+  const onFinish = (values: any) => {
+    pay({ ...values })
+      .then((paymentInfoModel) => {
+        form.resetFields();
+        showNotification('success', 'Payment has added!', `Payment id ${paymentInfoModel._id}`)
       });
   }
 
@@ -32,10 +38,7 @@ export const CardBody = () => {
         name='payment-form'
         layout='vertical'
         autoComplete='off'
-        onFinish={(values) => {
-          pay({ ...values });
-          console.log(values);
-        }}
+        onFinish={onFinish}
       >
         <Row gutter={24}>
           <Col span={16}>
