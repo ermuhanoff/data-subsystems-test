@@ -22,13 +22,6 @@ export const CardBody = () => {
     autoComplete: 'off',
   }
 
-  const onFromSubmit = (event: SyntheticEvent) => {
-    event.preventDefault();
-
-    form.validateFields()
-      .then(() => form.submit());
-  }
-
   const onFinish = (values: any) => {
     pay({ ...values })
       .then((paymentInfoModel) => {
@@ -36,7 +29,6 @@ export const CardBody = () => {
         showNotification('success', 'Payment has added!', `Payment id ${paymentInfoModel._id}`)
       });
   }
-
 
   return (
     <Card title={constants.formTitle} className='payment-card'>
@@ -55,7 +47,7 @@ export const CardBody = () => {
 
           <CardAmount />
 
-          <CardButton formSubmitHandler={onFromSubmit} />
+          <CardButton />
         </Row>
       </Form>
     </Card>

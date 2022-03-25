@@ -3,15 +3,11 @@ import { Button, Col, Form } from 'antd';
 
 import { constants } from '../../constants';
 
-interface PropTypes {
-  formSubmitHandler: (event: SyntheticEvent) => void;
-};
-
-export const CardButton: FC<PropTypes> = ({ formSubmitHandler }) =>
+export const CardButton = () =>
   (
     <Col span={10} style={{ display: 'flex', justifyContent: 'flex-end', marginTop: 30 }}>
       <Form.Item>
-        <Button type='primary' htmlType='submit' onClick={formSubmitHandler}>
+        <Button type='primary' htmlType='submit' >
           {constants.buttonPayText}
         </Button>
       </Form.Item>
