@@ -17,3 +17,8 @@ export const showNotification = (type: IconType, message: string, description: s
     placement: 'bottomLeft',
   });
 }
+
+export const normalizeNumber = (event: SyntheticEvent<HTMLInputElement>) => allowInputByPattern(
+  event,
+  /^[0-9]+$/
+);
