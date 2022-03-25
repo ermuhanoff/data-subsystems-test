@@ -1,0 +1,10 @@
+.payment-card {
+    width: 420px;
+    border-radius: 10px !important;
+}
+
+.payment-card > .ant-card-head {
+    background-color: #3a3a3a;
+    color: #ffffff;
+    border-radius: 10px 10px 0 0;
+}
